@@ -1,5 +1,5 @@
 const express = require("express");
-const { getBook, getAllBooks, addBook } = require("../controllers/book");
+const { getBook, getAllBooks, addBook, addReview } = require("../controllers/book");
 const { getAccessToRoute, adminAccessToRoute } = require("../middlewares/access_route");
 
 const router = express.Router();

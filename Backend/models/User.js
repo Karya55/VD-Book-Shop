@@ -35,7 +35,11 @@ const UserSchema = new Schema({
     avatar: {
         type: String,
         default: "default.jpg"
-    }
+    },
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: "review"
+    }]
 });
 
 UserSchema.methods.generateJWT = function() {

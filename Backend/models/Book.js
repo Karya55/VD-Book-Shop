@@ -12,6 +12,10 @@ const BookSchema = new Schema({
         type: String,
         required: [true, "Missing field: author"]
     },
+    category: [{
+        type: Schema.Types.ObjectId,
+        ref: "bookCategory",
+    }],
     cover: {
         type: String,
         default: "default.jpg"
@@ -25,7 +29,11 @@ const BookSchema = new Schema({
             },
             message: "Invalid page count"
         }
-    }
+    },
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: "review"
+    }]
 });
 
 module.exports = mongoose.model("book", BookSchema);

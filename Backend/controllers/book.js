@@ -1,5 +1,8 @@
 const asyncHandler = require("express-async-handler");
+const User = require("../models/User");
 const Book = require("../models/Book");
+const BookCategory = require("../models/BookCategory");
+const Review = require("../models/Review");
 const CustomError = require("../helpers/CustomError");
 
 const getBook = asyncHandler(async (req, res, next) => {
@@ -30,11 +33,19 @@ const getAllBooks = asyncHandler(async (req, res, next) => {
 });
 
 const addBook = asyncHandler(async (req, res, next) => {
-    const { title, author, cover, pageCount } = req.body;
+    const { title, author, categoryName, cover, pageCount } = req.body;
+
+    const category = await BookCategory.findOne({
+        name: categoryName
+    });
+
+    if (!category)
+        return next(new CustomError("Category not found", 404));
 
     await Book.create({
         title,
         author,
+        category,
         cover,
         pageCount
     });
