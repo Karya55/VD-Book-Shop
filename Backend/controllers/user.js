@@ -84,10 +84,24 @@ const getFavorites = asyncHandler(async (req, res, next) => {
     });
 });
 
+const updateAvatar = asyncHandler(async (req, res, next) => {
+    await User.findByIdAndUpdate(req.user.id, {
+        avatar: req.savedAvatar
+    });
+
+    res.status(200).json({
+        success: true,
+        data: {
+            avatar: req.savedAvatar
+        }
+    });
+});
+
 module.exports = {
     getUser,
     getAllUsers,
     addFavorite,
     getReviews,
-    getFavorites
+    getFavorites,
+    updateAvatar
 };

@@ -3,6 +3,7 @@ const User = require("../models/User");
 const CustomError = require("../helpers/CustomError");
 const bcrypt = require("bcrypt");
 const { sendJWT } = require("../helpers/token");
+const Cart = require("../models/Cart");
 
 const login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
@@ -24,10 +25,14 @@ const login = asyncHandler(async (req, res, next) => {
 const register = asyncHandler(async (req, res, next) => {
     const { email, password, username } = req.body;
 
+    const cart = await Cart.create({});
+    console.log(cart);
+
     const user = await User.create({
        email,
        password,
-       name: username 
+       name: username,
+       cart
     });
 
     sendJWT(user, res);

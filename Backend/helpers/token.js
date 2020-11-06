@@ -15,7 +15,8 @@ const sendJWT = (user, res) => {
         success: true,
         data: {
             access_token: token,
-            expiration: parseInt(process.env.JWT_EXPIRE.slice(0, -1))
+            expiration: parseInt(process.env.JWT_EXPIRE.slice(0, -1)),
+            userId: user._id
         }
     });
 }

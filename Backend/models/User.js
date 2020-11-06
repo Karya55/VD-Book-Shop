@@ -43,7 +43,11 @@ const UserSchema = new Schema({
     favorites: [{
         type: Schema.Types.ObjectId,
         ref: "book"
-    }]
+    }],
+    cart: {
+        type: Schema.Types.ObjectId,
+        ref: "cart"
+    }
 });
 
 UserSchema.methods.generateJWT = function() {
