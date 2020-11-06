@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
+const Book = require("../models/Book");
 const CustomError = require("../helpers/CustomError");
 
 const getUser = asyncHandler(async (req, res, next) => {
@@ -29,7 +30,64 @@ const getAllUsers = asyncHandler(async (req, res, next) => {
     });
 });
 
+const addFavorite = asyncHandler(async (req, res, next) => {
+    const bookId = req.params.bookId;
+
+    const book = await Book.findById(bookId);
+    if (!book)
+        return next(new CustomError("Book not found", 404));
+
+    await User.findByIdAndUpdate(req.user.id, {
+        $push: {
+            favorites: book
+        }
+    });
+
+    res.status(200).json({
+        success: true
+    });
+});
+
+const getReviews = asyncHandler(async (req, res, next) => {
+    const userId = req.params.id;
+
+    const reviews = await User.findById(userId).select("reviews").populate({
+        path: "reviews",
+        select: "-_id -user -__v",
+        populate: {
+            path: "book",
+            select: "cover author title"
+        }
+    });
+
+    res.status(200).json({
+        success: true,
+        data: {
+            reviews
+        }
+    });
+});
+
+const getFavorites = asyncHandler(async (req, res, next) => {
+    const userId = req.params.id;
+
+    const favorites = await User.findById(userId).select("favorites").populate({
+        path: "favorites",
+        select: "cover title id author"
+    });
+
+    res.status(200).json({
+        success: true,
+        data: {
+            favorites
+        }
+    });
+});
+
 module.exports = {
     getUser,
-    getAllUsers
+    getAllUsers,
+    addFavorite,
+    getReviews,
+    getFavorites
 };

@@ -39,6 +39,10 @@ const UserSchema = new Schema({
     reviews: [{
         type: Schema.Types.ObjectId,
         ref: "review"
+    }],
+    favorites: [{
+        type: Schema.Types.ObjectId,
+        ref: "book"
     }]
 });
 

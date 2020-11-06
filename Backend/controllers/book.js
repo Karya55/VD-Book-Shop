@@ -1,8 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const User = require("../models/User");
 const Book = require("../models/Book");
 const BookCategory = require("../models/BookCategory");
-const Review = require("../models/Review");
 const CustomError = require("../helpers/CustomError");
 
 const getBook = asyncHandler(async (req, res, next) => {
@@ -13,10 +11,17 @@ const getBook = asyncHandler(async (req, res, next) => {
     if (!book)
         return next(new CustomError("Book not found", 404));
 
+    const averageStar = book.totalStart / book.totalReview;
+    book.totalStart = undefined;
+    book.totalReview = undefined;
+
     res.status(200).json({
         success: true,
         data: {
-            book
+            book: {
+                averageStar: (!averageStar) ? 0 : averageStar,
+                ...book.toObject()
+            }
         }
     });
 });

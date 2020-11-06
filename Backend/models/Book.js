@@ -33,7 +33,15 @@ const BookSchema = new Schema({
     reviews: [{
         type: Schema.Types.ObjectId,
         ref: "review"
-    }]
+    }],
+    totalReview: {
+        type: Number,
+        default: 0
+    },
+    totalStar: {
+        type: Number,
+        default: 0
+    }
 });
 
 module.exports = mongoose.model("book", BookSchema);

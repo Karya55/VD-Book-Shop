@@ -17,8 +17,7 @@ const ReviewSchema = new Schema({
         type: String,
     },
     star: {
-        type: Number,
-        default: -1
+        type: Number
     }
 });
 
