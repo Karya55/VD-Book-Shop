@@ -46,15 +46,22 @@ const getCart = asyncHandler(async (req, res, next) => {
 
     const cart = await Cart.findById(cartId).select("-_id -__v").populate({
         path: "products",
-        select: "cover author title"
+        select: "cover author title price"
     });
+
     if (!cart)
         return next(new CustomError("Cart not found", 404));
+
+    let totalPrice = 0
+    cart.products.forEach(product => {
+        totalPrice += product.price;
+    });
 
     res.status(200).json({
         success: true,
         data: {
-            cart
+            ...cart.toObject(),
+            totalPrice
         }
     });
 });
