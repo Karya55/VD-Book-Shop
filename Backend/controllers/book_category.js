@@ -34,7 +34,7 @@ const getBooks = asyncHandler(async (req, res, next) => {
     if (!category)
         return next(new CustomError("Category not found", 404));
 
-    const books = await Book.find({
+    let query = Book.find({
         category
     })
     .populate({
@@ -42,6 +42,22 @@ const getBooks = asyncHandler(async (req, res, next) => {
         select: "_id name"
     })
     .select("-__v -totalStar -totalReview");
+
+    const sortKey = req.query.sortBy;
+    if (sortKey === "most-reviewed")
+        query = query.sort("-totalReview");
+    else if (sortKey === "highest-price")
+        query = query.sort("-price");
+    else if (sortKey === "lowest-price")
+        query = query.sort("price");
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const startIdx = (page - 1) * limit;
+
+    query.skip(startIdx).limit(limit);
+
+    const books = await query;
 
     res.status(200).json({
         success: true,

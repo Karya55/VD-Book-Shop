@@ -27,7 +27,23 @@ const getBook = asyncHandler(async (req, res, next) => {
 });
 
 const getAllBooks = asyncHandler(async (req, res, next) => {
-    const books = await Book.find().select("-__v");
+    let query = Book.find().select("-__v");
+
+    const sortKey = req.query.sortBy;
+    if (sortKey === "most-reviewed")
+        query = query.sort("-totalReview");
+    else if (sortKey === "highest-price")
+        query = query.sort("-price");
+    else if (sortKey === "lowest-price")
+        query = query.sort("price");
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const startIdx = (page - 1) * limit;
+
+    query.skip(startIdx).limit(limit);
+
+    const books = await query;
 
     res.status(200).json({
         success: true,
@@ -61,8 +77,24 @@ const addBook = asyncHandler(async (req, res, next) => {
     });
 });
 
+const searchBook = asyncHandler(async (req, res, next) => {
+    const title = req.query.title;
+
+    const books = await Book.find({
+        title: { $regex: title, $options: 'i' }
+    });
+
+    res.status(200).json({
+        success: true,
+        data: {
+            books
+        }
+    });
+});
+
 module.exports = {
     getBook,
     getAllBooks,
-    addBook
+    addBook,
+    searchBook
 };
