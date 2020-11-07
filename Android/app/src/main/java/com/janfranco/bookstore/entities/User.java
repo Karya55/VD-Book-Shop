@@ -2,6 +2,8 @@ package com.janfranco.bookstore.entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class User {
 
     @SerializedName("_id")
@@ -18,6 +20,15 @@ public class User {
 
     @SerializedName("role")
     private String role;
+
+    @SerializedName("cart")
+    private String cartId;
+
+    @SerializedName("favorites")
+    private List<Book> favorites;
+
+    @SerializedName("reviews")
+    private List<Review> reviews;
 
     public String getId() {
         return id;
