@@ -10,23 +10,25 @@
         android:id="@+id/auth_mail_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:hint="@string/auth_mail_hint"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/auth_password_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="@string/auth_password_hint"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/auth_mail_edit_text" />
 
@@ -34,7 +36,7 @@
         android:id="@+id/auth_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/auth_login_button"
         app:layout_constraintEnd_toEndOf="@+id/auth_password_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/auth_password_edit_text" />
@@ -43,9 +45,33 @@
         android:id="@+id/auth_register_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:text="@string/auth_register_text"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/auth_login_button" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="102dp"
+        android:layout_height="35dp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="64dp"
+        android:text="@string/auth_login_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="@+id/auth_mail_edit_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="297dp"
+        android:layout_height="315dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auth_register_text"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/pic" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

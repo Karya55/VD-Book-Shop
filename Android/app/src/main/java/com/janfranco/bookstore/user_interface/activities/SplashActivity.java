@@ -12,6 +12,7 @@ import com.janfranco.bookstore.services.SharedPreferencesService;
 
 import butterknife.BindString;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @SuppressLint("NonConstantResourceId")
 public class SplashActivity extends AppCompatActivity {
@@ -53,11 +54,13 @@ public class SplashActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // SPLASH STUFF
-
         try {
             mSharedPreferencesService.writeData(firstTimeKey, false);
         } catch (UnknownTypeException ignored) { }
+    }
+
+    @OnClick(R.id.splash_button) void nextButtonClicked() {
+        navigateToAuthActivity();
     }
 
     private void navigateToAuthActivity() {

@@ -14,6 +14,12 @@
     <string name="auth_password_hint">Password</string>
     <string name="auth_mail_hint">E-mail</string>
     <string name="auth_bad_input_error_message">Please, check your inputs</string>
+    <string name="auth_login_text">LOGIN</string>
+
+    <string name="register_register_text">REGISTER</string>
+    <string name="register_username">Username</string>
+
+    <string name="splash_button">NEXT</string>
 
     <string name="profile_avatar_desc">user avatar</string>
 
