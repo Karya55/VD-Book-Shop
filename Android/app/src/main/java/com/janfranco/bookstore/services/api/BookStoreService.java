@@ -33,7 +33,7 @@ public class BookStoreService {
     private final RepositoryBase mRepositoryBase;
 
     private BookStoreService() {
-        String baseUrl = "http://37.148.209.192:3003/api/";
+        String baseUrl = "http://37.148.209.192:3005/api/";
         Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         mBookStoreAPI = retrofit.create(BookStoreAPI.class);

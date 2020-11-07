@@ -10,7 +10,7 @@ public class RegularExpressionHelper {
         mPattern = Pattern.compile(pattern);
     }
 
-    private boolean isValid(String value) {
+    public boolean isValid(String value) {
         return mPattern.matcher(value).matches();
     }
 
