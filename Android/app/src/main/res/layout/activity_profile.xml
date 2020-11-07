@@ -6,4 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".user_interface.activities.ProfileActivity">
 
+    <ImageView
+        android:id="@+id/profile_avatar_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/profile_avatar_desc" />
+
+    <TextView
+        android:id="@+id/profile_username_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_avatar_image_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_favorites_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_username_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_reviews_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_favorites_recycler_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

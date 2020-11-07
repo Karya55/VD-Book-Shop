@@ -1,14 +1,21 @@
 <resources>
     <string name="app_name">BookStore</string>
+    <string name="api_service_avatar_url">http://37.148.209.192:3005/uploads/</string>
 
     <string name="shared_pref_file_key">com.janfranco.bookstore</string>
     <string name="splash_first_time_key">first_time</string>
     <string name="token_key">token</string>
     <string name="expiration_key">expiration</string>
 
+    <string name="intent_user_id">userId</string>
+
     <string name="auth_register_text">Don\'t have an account? Click here to register</string>
     <string name="auth_login_button">Login</string>
     <string name="auth_password_hint">Password</string>
     <string name="auth_mail_hint">E-mail</string>
     <string name="auth_bad_input_error_message">Please, check your inputs</string>
+
+    <string name="profile_avatar_desc">user avatar</string>
+
+    <string name="recycler_row_favorite_book_cover_desc">Book cover</string>
 </resources>

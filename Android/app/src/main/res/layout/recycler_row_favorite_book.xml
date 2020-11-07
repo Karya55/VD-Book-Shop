@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/recycler_row_favorite_book_cover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/recycler_row_favorite_book_cover_desc" />
+
+    <TextView
+        android:id="@+id/recycler_row_favorite_book_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/recycler_row_favorite_book_cover"
+        app:layout_constraintStart_toStartOf="@+id/recycler_row_favorite_book_cover"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_row_favorite_book_cover" />
+
+    <TextView
+        android:id="@+id/recycler_row_favorite_book_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/recycler_row_favorite_book_cover"
+        app:layout_constraintStart_toStartOf="@+id/recycler_row_favorite_book_cover"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_row_favorite_book_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
