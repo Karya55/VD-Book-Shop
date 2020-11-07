@@ -24,6 +24,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface BookStoreAPI {
 
@@ -69,7 +70,10 @@ public interface BookStoreAPI {
 
     @GET("book-category/{category_id}")
     Call<Result<BookList>> getBooksByCategory(@Header("Authorization") String accessToken,
-                                              @Path(value="category_id") String categoryId);
+                                              @Path(value="category_id") String categoryId,
+                                              @Query("sortBy") String sortBy,
+                                              @Query("limit") String limit,
+                                              @Query("page") String page);
 
     // BOOK
     @GET("book/{book_id}")
@@ -77,7 +81,10 @@ public interface BookStoreAPI {
                                @Path(value="book_id") String bookId);
 
     @GET("book/all")
-    Call<Result<BookList>> getAllBooks(@Header("Authorization") String accessToken);
+    Call<Result<BookList>> getAllBooks(@Header("Authorization") String accessToken,
+                                       @Query("sortBy") String sortBy,
+                                       @Query("limit") String limit,
+                                       @Query("page") String page);
 
     // CART
     @GET("cart/{cart_id}")

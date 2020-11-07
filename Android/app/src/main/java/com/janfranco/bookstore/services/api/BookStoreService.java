@@ -110,8 +110,16 @@ public class BookStoreService {
         mRepositoryBase.query(call, resultCallback);
     }
 
-    public void getBooksByCategory(String accessToken, String categoryId, ResultCallback<BookList> resultCallback) {
-        Call<Result<BookList>> call = mBookStoreAPI.getBooksByCategory(accessToken, categoryId);
+    /**
+     * @param page Send 0 if you want to be default
+     * @param limit Send 0 if you want to be default
+     * @param sortBy Send empty string if you want to be default or one of these:
+     *               "most-reviewed", "highest-price", "lowest-price"
+     */
+    public void getBooksByCategory(String accessToken, String categoryId, int page, int limit,
+                                   String sortBy, ResultCallback<BookList> resultCallback) {
+        Call<Result<BookList>> call = mBookStoreAPI.getBooksByCategory(accessToken, categoryId,
+                sortBy, limit != 0 ? String.valueOf(limit) : "", page != 0 ? String.valueOf(page) : "");
         mRepositoryBase.query(call, resultCallback);
     }
 
@@ -121,8 +129,16 @@ public class BookStoreService {
         mRepositoryBase.query(call, resultCallback);
     }
 
-    public void getAllBooks(String accessToken, ResultCallback<BookList> resultCallback) {
-        Call<Result<BookList>> call = mBookStoreAPI.getAllBooks(accessToken);
+    /**
+     * @param page Send 0 if you want to be default
+     * @param limit Send 0 if you want to be default
+     * @param sortBy Send empty string if you want to be default or one of these:
+     *               "most-reviewed", "highest-price", "lowest-price"
+     */
+    public void getAllBooks(String accessToken, int page, int limit,
+                            String sortBy, ResultCallback<BookList> resultCallback) {
+        Call<Result<BookList>> call = mBookStoreAPI.getAllBooks(accessToken, sortBy,
+                limit != 0 ? String.valueOf(limit) : "", page != 0 ? String.valueOf(page) : "");
         mRepositoryBase.query(call, resultCallback);
     }
 

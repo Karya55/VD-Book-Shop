@@ -4,4 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user_interface.activities.AuthActivity"/>
+    tools:context=".user_interface.activities.CartActivity">
+
+</androidx.constraintlayout.widget.ConstraintLayout>

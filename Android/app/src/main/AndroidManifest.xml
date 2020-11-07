@@ -12,14 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
-        <activity android:name=".user_interface.activities.RegisterActivity" />
-        <activity android:name=".user_interface.activities.AuthActivity">
+        <activity android:name=".user_interface.activities.CommunityActivity"></activity>
+        <activity android:name=".user_interface.activities.BookActivity" />
+        <activity android:name=".user_interface.activities.CartActivity" />
+        <activity android:name=".user_interface.activities.ProfileActivity" />
+        <activity android:name=".user_interface.activities.HomeActivity" />
+        <activity android:name=".user_interface.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".user_interface.activities.RegisterActivity" />
+        <activity android:name=".user_interface.activities.AuthActivity" />
     </application>
 
 </manifest>
