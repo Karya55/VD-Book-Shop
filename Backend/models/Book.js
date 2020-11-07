@@ -12,6 +12,9 @@ const BookSchema = new Schema({
         type: String,
         required: [true, "Missing field: author"]
     },
+    description: {
+        type: String
+    },
     category: [{
         type: Schema.Types.ObjectId,
         ref: "bookCategory",

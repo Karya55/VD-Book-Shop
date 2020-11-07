@@ -5,7 +5,7 @@ const { getAccessToRoute, adminAccessToRoute } = require("../middlewares/access_
 const router = express.Router();
 
 router.get("/", getAccessToRoute, getCategories);
-router.post("/add", [getAccessToRoute], addCategory);
+router.post("/add", [getAccessToRoute, adminAccessToRoute], addCategory);
 router.get("/:categoryId", getAccessToRoute, getBooks);
 
 module.exports = router;

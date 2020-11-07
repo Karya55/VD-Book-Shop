@@ -41,7 +41,7 @@ const getBooks = asyncHandler(async (req, res, next) => {
         path: 'category',
         select: "_id name"
     })
-    .select("-__v");
+    .select("-__v -totalStar -totalReview");
 
     res.status(200).json({
         success: true,

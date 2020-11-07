@@ -6,8 +6,11 @@ const avatarUpload = require("../middlewares/avatar_upload");
 const router = express.Router();
 
 router.get("/all", [getAccessToRoute, adminAccessToRoute], getAllUsers);
+router.get("/favorites", getAccessToRoute, getFavorites);
 router.get("/:id/favorites", getAccessToRoute, getFavorites);
+router.get("/reviews", getAccessToRoute, getReviews);
 router.get("/:id/reviews", getAccessToRoute, getReviews);
+router.get("/", getAccessToRoute, getUser);
 router.get("/:id", getAccessToRoute, getUser);
 router.get("/add-favorite/:bookId", getAccessToRoute, addFavorite);
 router.put("/update-avatar", [getAccessToRoute, avatarUpload.single("avatar")], updateAvatar);

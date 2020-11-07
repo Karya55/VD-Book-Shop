@@ -38,7 +38,7 @@ const getAllBooks = asyncHandler(async (req, res, next) => {
 });
 
 const addBook = asyncHandler(async (req, res, next) => {
-    const { title, author, categoryName, cover, pageCount } = req.body;
+    const { title, author, categoryName, cover, pageCount, description } = req.body;
 
     const category = await BookCategory.findOne({
         name: categoryName
@@ -52,7 +52,8 @@ const addBook = asyncHandler(async (req, res, next) => {
         author,
         category,
         cover,
-        pageCount
+        pageCount,
+        description
     });
 
     res.status(200).json({

@@ -4,7 +4,7 @@ const Book = require("../models/Book");
 const CustomError = require("../helpers/CustomError");
 
 const getUser = asyncHandler(async (req, res, next) => {
-    const id = req.params.id;
+    const id = req.params.id || req.user.id;
 
     const user = await User.findById(id).select("-role -__v");
 
@@ -49,9 +49,9 @@ const addFavorite = asyncHandler(async (req, res, next) => {
 });
 
 const getReviews = asyncHandler(async (req, res, next) => {
-    const userId = req.params.id;
+    const userId = req.params.id || req.user.id;
 
-    const reviews = await User.findById(userId).select("reviews").populate({
+    const userReviews = await User.findById(userId).select("-_id -__v -role -avatar -favorites -email -name").populate({
         path: "reviews",
         select: "-_id -user -__v",
         populate: {
@@ -59,6 +59,8 @@ const getReviews = asyncHandler(async (req, res, next) => {
             select: "cover author title"
         }
     });
+
+    const reviews = userReviews.reviews;
 
     res.status(200).json({
         success: true,
@@ -69,12 +71,14 @@ const getReviews = asyncHandler(async (req, res, next) => {
 });
 
 const getFavorites = asyncHandler(async (req, res, next) => {
-    const userId = req.params.id;
+    const userId = req.params.id || req.user.id;
 
-    const favorites = await User.findById(userId).select("favorites").populate({
+    const userFavorites = await User.findById(userId).select("-_id -email -name -__v -role -avatar -reviews").populate({
         path: "favorites",
         select: "cover title id author"
     });
+
+    const favorites = userFavorites.favorites;
 
     res.status(200).json({
         success: true,
@@ -90,10 +94,12 @@ const updateAvatar = asyncHandler(async (req, res, next) => {
     });
 
     res.status(200).json({
-        success: true,
+        success: true
+        /*
         data: {
             avatar: req.savedAvatar
         }
+        */
     });
 });
 
